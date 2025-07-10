@@ -2,7 +2,7 @@
 
 /**
  *
- * Handles post querying between 2 dates else default last 30 days.
+ * Handles post querying between 2 dates else default last 30 days. filter by block name.
  *
  * @package DMG
  */
@@ -45,7 +45,7 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
 	 * @var array $output_row
 	 * */
 	private array $output_row = array();/**
-    * Get all the posts between 2 dates else query the last 30 days
+    * Get all the posts between 2 dates else query the last 30 days. filter by block name.
     * 
     * ## OPTIONS
     *
@@ -73,21 +73,28 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
         $end_date      = $assoc_args['end-date']   ?? '';
         $block_name      = $assoc_args['block-name']   ?? '';
 
+        // not running  any uipdates so not required. force of habit defining.
         if ( $this->dry_run ) {
             \WP_CLI::Line( 'Dry run' );
         } 
-        \WP_CLI::Line( "Running query");
-        
          
         \WP_CLI::Line( "Running query with {$block_name} /' {$start_date} /  {$end_date}");
+
+        // get the postIDs for the block name and date range if they exist
         $post_ids = $this->get_post_ids(
             $block_name,
             $start_date,
             $end_date
         );
-            
-        print_r( $post_ids );
-    }
+        
+        // output the post IDs
+        if ( ! empty( $post_ids ) ) { 
+            foreach( $post_ids as $post_id ) { 
+                \WP_CLI::line( "{$post_id}"); 
+            }
+        } else {
+            \WP_CLI::line( 'No posts found for the given criteria.' );
+        }
 
     /**
      * WP CLI function to query posts on dates.
@@ -97,11 +104,13 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
 
     function get_post_ids( $block_name = '', $start_date = '', $end_date = '' ) {
 
+        // set the date vars : ; last 30 days if no dates provided
         if ( empty( $start_date ) || empty( $end_date ) ) {
             $end_date   = current_time( 'Y-m-d' );
             $start_date = date( 'Y-m-d', strtotime( '-30 days', strtotime( $end_date ) ) );
         }
 
+        // Prepare the query arguments
         $args = [
             'post_type'      => 'post',
             'posts_per_page' => -1,
@@ -147,7 +156,9 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
 	public static function help() {
 		WP_CLI::line(
 			<<<HELP
-usage: wp tag manager can be used to remove tags no londer required. Before the tags are deleted, a check if the tags are used in links in any posts and if they are then those links are removed. Following this, a redirect to the homes page is created for the terms that has been deleted as a README.md
+DMG Query Manager WP CLI. Collect posts between 2 dates or last 30 days and filter by block name.
+subcommand vars = block-name, start-date, end-date, dry-run.
+All can be left empty. Any block name can be used ie create-block/dmg-post-selector, core/paragraph, core/image, core/heading etc.
 HELP
 		);
 	}
