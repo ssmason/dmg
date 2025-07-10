@@ -161,7 +161,13 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
 		WP_CLI::line(
 			<<<HELP
 DMG Query Manager WP CLI. Collect posts between 2 dates or last 30 days and filter by block name.
-subcommand vars = block-name, start-date, end-date, dry-run.
+
+Subcommand vars:
+block-name <string>,
+start-date <YYYY-MM-DD>,
+end-date <YYYY-MM-DD>,
+dry-run <boolean>.
+
 All can be left empty. Any block name can be used ie create-block/dmg-post-selector, core/paragraph, core/image, core/heading etc.
 HELP
 		);

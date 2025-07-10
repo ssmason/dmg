@@ -42,10 +42,12 @@ wp
 
 subcommand vars: 
 ```
-block-name, 
-start-date, 
-end-date, 
-dry-run #not required as no db update.
+Subcommand vars:
+
+block-name  <string>,
+start-date  <string YYYY-MM-DD>,
+end-date    <string YYYY-MM-DD>,
+dry-run     <boolean>.
 ```
 
 commands : 
