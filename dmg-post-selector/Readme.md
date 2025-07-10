@@ -22,15 +22,34 @@ Choosing a new post should update the anchor link shown in the editor.
 
 == Installation ==
 
-e.g.
-
 1. Upload the plugin files to the `/wp-content/plugins/dmg-post-selector` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
+== block structure ==
 
-== Frequently Asked Questions ==
+dmg-block-selector/
+├── block.json
+├── index.php               # (PHP render callback if dynamic)
+├── src/
+│   ├── edit.js             # Editor component (backend)
+│   ├── save.js             # Frontend markup (for static blocks)
+│   ├── index.js            # Block registration entry point
+│   └── style.scss          # Shared styles
+│
+├── build/
+│   ├── index.js            # Compiled JS from src
+│   └── style.css           # Compiled CSS from src
+│   └── blocks-manifest.php
+│
+├── style.css               # Frontend styles (enqueued automatically)
+├── editor.css              # Editor-only styles (enqueued automatically)
+├── package.json            # Project dependencies and scripts
+├── webpack.config.js       # Build config (if customizing build)
+└── README.md               # Optional documentation
+└── dmg-post-selector.php.  # plugin file
 
-= How do i use the block =
+
+= Using the block =
 
 Using the block inserter ( + ) on the page or top left of editor. 
 Select "dmg post selector" from the available blocks
@@ -45,8 +64,6 @@ save
 ![Select Block](assets/select-block.png)
 ![Inspector View](assets/inspector.png)
 ![Selected View](assets/selected.png)
-
-
 
 == Changelog ==
 
