@@ -163,10 +163,11 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
 DMG Query Manager WP CLI. Collect posts between 2 dates or last 30 days and filter by block name.
 
 Subcommand vars:
-block-name <string>,
-start-date <YYYY-MM-DD>,
-end-date <YYYY-MM-DD>,
-dry-run <boolean>.
+
+--block-name=<string>     Filter by block name (e.g. create-block/dmg-post-selector, core/paragraph, core/image, etc.)
+--start-date=<date>       Start date in YYYY-MM-DD format (optional)
+--end-date=<date>         End date in YYYY-MM-DD format (optional)
+--dry-run                 Run the command without making any changes
 
 All can be left empty. Any block name can be used ie create-block/dmg-post-selector, core/paragraph, core/image, core/heading etc.
 HELP

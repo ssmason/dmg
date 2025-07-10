@@ -44,10 +44,10 @@ subcommand vars:
 ```
 Subcommand vars:
 
-block-name  <string>,
-start-date  <string YYYY-MM-DD>,
-end-date    <string YYYY-MM-DD>,
-dry-run     <boolean>.
+--block-name=<string>     Filter by block name (e.g. core/paragraph, core/image, etc.)
+--start-date=<date>       Start date in YYYY-MM-DD format (optional)
+--end-date=<date>         End date in YYYY-MM-DD format (optional)
+--dry-run                 Run the command without making any changes
 ```
 
 commands : 
