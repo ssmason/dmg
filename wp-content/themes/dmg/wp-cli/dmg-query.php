@@ -109,6 +109,7 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
             $start_date = current_time( 'Y-m-d' ); // default to today
         }
 
+        // if end date is missing the we simply add 30 days to the start date
         if ( empty( $end_date ) ) {
             $end_date = date( 'Y-m-d', strtotime( '+30 days', strtotime( $start_date ) ) );
         }
