@@ -26,7 +26,7 @@ Choosing a new post should update the anchor link shown in the editor.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == block structure ==
-
+<pre> ```
 dmg-block-selector/
 ├── block.json
 ├── index.php               # (PHP render callback if dynamic)
@@ -47,7 +47,7 @@ dmg-block-selector/
 ├── webpack.config.js       # Build config (if customizing build)
 └── README.md               # Optional documentation
 └── dmg-post-selector.php.  # plugin file
-
+``` </pre>
 
 = Using the block =
 
