@@ -104,10 +104,13 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
 
     function get_post_ids( $block_name = '', $start_date = '', $end_date = '' ) {
 
-        // set the date vars : ; last 30 days if no dates provided
-        if ( empty( $start_date ) || empty( $end_date ) ) {
-            $end_date   = current_time( 'Y-m-d' );
-            $start_date = date( 'Y-m-d', strtotime( '-30 days', strtotime( $end_date ) ) );
+        // Normalize date inputs so handles if 1 or the other added in options
+        if ( empty( $start_date ) ) {
+            $start_date = current_time( 'Y-m-d' ); // default to today
+        }
+
+        if ( empty( $end_date ) ) {
+            $end_date = date( 'Y-m-d', strtotime( '+30 days', strtotime( $start_date ) ) );
         }
 
         // Prepare the query arguments
