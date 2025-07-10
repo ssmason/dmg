@@ -42,9 +42,11 @@ save
 
 == Screenshots ==
 
+
 ![Alt text](assets/inspector.png)
 ![Alt text](assets/select-block.png)
 ![Alt text](assets/selected.png)
+
 
 
 == Changelog ==
