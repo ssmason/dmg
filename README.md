@@ -2,10 +2,10 @@
 DMG Task 
 
 Readme.md files in 
-
-wp-content/themes/dmg/Readme.md
+``` 
+wp-content/themes/dmg/Readme.md  
 dmg-post-selector/Readme.md
-
+``` 
 
 Development task for Full Stack Developer (WordPress) role at dmg::media
 To ensure you’re a good fit for this role, we ask that you please complete the following development task.
