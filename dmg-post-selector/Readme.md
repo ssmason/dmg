@@ -42,10 +42,9 @@ save
 
 == Screenshots ==
 
-
-![Alt text](assets/inspector.png)
-![Alt text](assets/select-block.png)
-![Alt text](assets/selected.png)
+![Select Block](assets/select-block.png)
+![Inspector View](assets/inspector.png)
+![Selected View](assets/selected.png)
 
 
 
