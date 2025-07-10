@@ -41,7 +41,7 @@ Once you have a visual on the post you wush to insert click on it and it will be
 save
 
 == Screenshots ==
-![Alt text] /assets/inspector.png
+
 /assets/inspector.png
 /assets/select-block.png
 /assets/selected.png
