@@ -12,9 +12,20 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start --webpack-copy-php --blocks-manifest"
+		"start": "wp-scripts start --webpack-copy-php --blocks-manifest",
+		"test": "wp-scripts test-unit-js",
+		"test:watch": "wp-scripts test-unit-js --watch"
 	},
 	"devDependencies": {
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.0",
+		"@testing-library/user-event": "^14.6.1",
+		"@wordpress/block-editor": "^15.8.0",
+		"@wordpress/components": "^30.8.0",
+		"@wordpress/data": "^10.35.0",
+		"@wordpress/element": "^6.35.0",
+		"@wordpress/i18n": "^6.8.0",
+		"@wordpress/jest-preset-default": "^12.35.0",
 		"@wordpress/scripts": "^30.19.0"
 	}
 }
