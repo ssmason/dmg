@@ -103,9 +103,9 @@ save
 
 == Screenshots ==
 
-![Select Block](assets/select-block.png)
-![Inspector View](assets/inspector.png)
-![Selected View](assets/selected.png)
+![Select Block](assets/editor-posts.png)
+![Inspector View](assets/editor-settings.png)
+![Selected View](assets/editor-paginator.png)
 ![Selected View](assets/readmore.png)
 
 == Changelog ==
