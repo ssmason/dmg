@@ -16,6 +16,9 @@ Create a WordPress plugin with two different features. This plugin can be shared
 only.
 
 A Gutenberg Block
+
+`/dmg-post-selector`
+
 Write a Gutenberg block using native WP React tools (no ACF or other plugin dependencies). This block should allow
 editors to search for and then choose a published post to insert into the editor as a stylized anchor link.
 Editors should be able to search posts in the InspectorControls using a search string. It should paginate results. It should
@@ -26,6 +29,8 @@ words `Read More: `. Choosing a new post should update the anchor link shown in 
 
 
 == A WP-CLI Command ==
+
+`/wp-content/themes/dmg/wp-cli`
 
 Create a custom WP-CLI command named like, `dmg-read-more search`
 This command will take optional date-range arguments like “date-before” and “date-after” If the dates are omitted, the command will default to the last 30 days.
