@@ -62,7 +62,7 @@ npm run test:watch
 
 The test suite includes:
 - Component rendering tests
-- Post filtering logic tests
+- Post filtering  logic tests
 - Pagination logic tests
 
 Tests are written using Jest and React Testing Library with WordPress-specific mocks.
