@@ -25,6 +25,48 @@ Choosing a new post should update the anchor link shown in the editor.
 1. Upload the plugin files to the `/wp-content/plugins/dmg-post-selector` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
+== Development ==
+
+=== Requirements ===
+- Node.js 18+ and npm
+- WordPress 6.0+
+- PHP 7.4+
+
+=== Setup ===
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start development mode:
+   ```bash
+   npm run start
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+=== Testing ===
+
+Run the test suite:
+```bash
+npm test
+```
+
+Run tests in watch mode:
+```bash
+npm run test:watch
+```
+
+The test suite includes:
+- Component rendering tests
+- Post filtering logic tests
+- Pagination logic tests
+
+Tests are written using Jest and React Testing Library with WordPress-specific mocks.
+
 == block structure ==
 <pre> ```
 dmg-block-selector/
