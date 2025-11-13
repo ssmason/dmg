@@ -7,7 +7,7 @@ export default function save( { attributes } ) {
 		<div {...useBlockProps.save()}>
 			{ selectedPostTitle && selectedPostLink ? (
 				<p className="dmg-read-more">
-					<a href={selectedPostLink} target="_blank" rel="noopener noreferrer">
+					Read more: <a href={selectedPostLink} target="_blank" rel="noopener noreferrer">
 						{selectedPostTitle}
 					</a>
 				</p>

@@ -28,6 +28,6 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'viewScript' => 'file:./view.js',
-		'style' => 'file:./style.css'
+		'style' => 'file:./style-index.css'
 	)
 );

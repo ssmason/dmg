@@ -6,7 +6,7 @@
 
 .wp-block-create-block-dmg-post-selector {
 	background-color: #80808021 !important;
-	
+
 
 }
 .wp-block-create-block-dmg-post-selector p {
@@ -16,10 +16,10 @@
 .dmg-read-more::before {
 	content: 'Read more: ';
 	text-decoration: none;
-	color:blue;
+	color: #000;
 }
 .dmg-read-more a {
-	color: #000
+	color: #958080
 }
 .dmg-post-selector-search{
 	background-color: #f0f0f0;
@@ -27,4 +27,11 @@
 	border-radius: 4px;
 	padding: 10px;
 	margin-bottom: 20px;
+}
+
+.dmg-post-selector-pagination {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	margin-top: 10px;
 }

@@ -13,8 +13,6 @@ if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
 
 /**
  * Handles post querying.
- *
- * @var Class DMG_Query_Manager_WP_CLI
  */
 class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
 
@@ -95,14 +93,16 @@ class DMG_Query_Manager_WP_CLI extends WP_CLI_Command {
         } else {
             \WP_CLI::line( 'No posts found for the given criteria.' );
         }
-
+    }
     /**
-     * WP CLI function to query posts on dates.
+     * Get post IDs filtered by block name and date range.
      *
-     * @package DMG
+     * @param string $block_name The block name to filter by.
+     * @param string $start_date Start date in Y-m-d format.
+     * @param string $end_date End date in Y-m-d format.
+     * @return array Array of post IDs.
      */
-
-    function get_post_ids( $block_name = '', $start_date = '', $end_date = '' ) {
+    private function get_post_ids( $block_name = '', $start_date = '', $end_date = '' ) {
 
         // Normalize date inputs so handles if 1 or the other added in options
         if ( empty( $start_date ) ) {

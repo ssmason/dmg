@@ -38,7 +38,7 @@ import { useSelect } from '@wordpress/data';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { useState } from '@wordpress/element';
+import { useState, useMemo } from '@wordpress/element';
 
 import { TextControl } from '@wordpress/components';
 
@@ -69,26 +69,31 @@ export default function Edit( { attributes, setAttributes } ) {
 		return getEntityRecords( 'postType', 'post', { per_page: -1, orderby: 'date', order: 'asc' } );
 	}, [] );
 
-	// Ensure posts is an array
-	const allPosts = Array.isArray(posts) ? posts : [];
-	// Filter posts based on search query
-	const filteredPosts = allPosts.filter((post) => {
-		if (!searchQuery) return true;
+	const allPosts = posts ?? [];
 
-		const lowerQuery = searchQuery.toLowerCase();
-		const titleMatch = post.title.rendered.toLowerCase().includes(lowerQuery);
-		const idMatch = post.id.toString() === searchQuery.trim();
+	// Filter posts based on search query (I memoize to avoid recalculating on every render)
+	const filteredPosts = useMemo(() => {
 
-		return titleMatch || idMatch;
-	});
+		return allPosts.filter((post) => {
+			if (!searchQuery) return true;
+
+			const lowerQuery = searchQuery.toLowerCase();
+			const titleMatch = post.title.rendered.toLowerCase().includes(lowerQuery);
+			const idMatch = post.id.toString() === searchQuery.trim();
+
+			return titleMatch || idMatch;
+		});
+	}, [allPosts, searchQuery]);
 
 	// Calculate pagination
 	const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
-	const paginatedPosts = filteredPosts.slice(
-		(currentPage - 1) * postsPerPage,
-		currentPage * postsPerPage
-	);
+	const paginatedPosts = useMemo(() => {
+		return filteredPosts.slice(
+			(currentPage - 1) * postsPerPage,
+			currentPage * postsPerPage
+		);
+	}, [filteredPosts, currentPage, postsPerPage]);
 
 
 	const handlePrev = () => {
@@ -117,7 +122,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				<PanelBody title="Select a Post" initialOpen={ true }>
 					{ !posts ? (
 						<Spinner />
-					) : filteredPosts.length === 0 ? ( 
+					) : filteredPosts.length === 0 ? (
 							<p style={{ fontStyle: 'italic', color: '#ff0000' }}>
 								No posts found.
 							</p>
@@ -127,7 +132,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								const rawExcerpt = post.excerpt?.rendered || '';
 								const plainExcerpt = rawExcerpt.replace(/<[^>]+>/g, '');
 								const shortExcerpt = plainExcerpt.split(/\s+/).slice(0, 20).join(' ') + '...';
-								
+
 								return (
 									<li key={post.id} onClick={() => setAttributes({
 										selectedPostTitle: post.title.rendered,
@@ -138,12 +143,12 @@ export default function Edit( { attributes, setAttributes } ) {
 									</li>
 								);
 							}) }
-						</ul> 
+						</ul>
 					) }
-					 
+
 					{/* Pagination controls */}
 					{totalPages > 1 && (
-						<div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px' }}>
+						<div className="dmg-post-selector-pagination">
 							<Button onClick={handlePrev} disabled={currentPage === 1}>
 								Previous
 							</Button>
@@ -157,8 +162,8 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<div {...useBlockProps()}>
-				{ selectedPostTitle && selectedPostLink ? ( 
-					<p className="dmg-read-more"> 
+				{ selectedPostTitle && selectedPostLink ? (
+					<p className="dmg-read-more">
 						<a href={selectedPostLink} target="_blank" rel="noopener noreferrer">
 							{selectedPostTitle}
 						</a>
@@ -168,6 +173,6 @@ export default function Edit( { attributes, setAttributes } ) {
 				 ) }
 			</div>
 		</>
-		 
+
 	);
 }

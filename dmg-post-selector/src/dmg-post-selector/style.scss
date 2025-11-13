@@ -6,7 +6,16 @@
  */
 
 .wp-block-create-block-dmg-post-selector {
-	background-color: #21759b;
-	color: #fff;
+	color: #000;
+	font-family:arial;
 	padding: 2px;
+	width:1150px;
+	margin:0 auto;
+}
+
+.dmg-read-more {
+	a {
+		color:#958080;
+		text-decoration: underline;
+	}
 }
