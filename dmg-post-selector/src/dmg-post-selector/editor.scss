@@ -35,3 +35,10 @@
 	align-items: center;
 	margin-top: 10px;
 }
+.components-panel__body ul li {
+	cursor: pointer;
+
+	&:hover {
+		background-color: #f0f0f0;
+	}
+}
