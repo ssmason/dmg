@@ -51,7 +51,7 @@ dmg-block-selector/
 
 = Using the block =
 
-Using the block inserter ( + ) on the page or top left of editor. 
+Using the block inserter ( + ) on the page or top left of editor.
 Select "dmg post selector" from the available blocks
 On the right hand inspector column you will see a list of posts. There are 5 per page and the paginator will reflect the number of posts that exist.
 Either paginate to the required post or use the search which accepts either a string for the title or a postID
@@ -64,6 +64,7 @@ save
 ![Select Block](assets/select-block.png)
 ![Inspector View](assets/inspector.png)
 ![Selected View](assets/selected.png)
+![Selected View](assets/readmore.png)
 
 == Changelog ==
 
